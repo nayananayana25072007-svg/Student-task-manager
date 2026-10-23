@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>StudyTasks — Student task manager</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Simple brand header -->
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="StudyTasks home">
+      <span class="brand-mark" aria-hidden="true">✓</span>
+      <span>StudyTasks</span>
+    </a>
+    <p class="topbar-note">A little progress every day</p>
+  </header>
+
+  <main class="page-shell">
+    <!-- Intro banner and live task totals -->
+    <section class="welcome" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">YOUR STUDY SPACE</p>
+        <h1 id="page-title">Make room for <span>what matters.</span></h1>
+        <p class="welcome-copy">Keep track of assignments, projects, and all the little steps in between.</p>
+      </div>
+      <div class="welcome-art" aria-hidden="true">
+        <span class="art-star">✳</span>
+        <span class="art-check">✓</span>
+        <span class="art-dot"></span>
+      </div>
+    </section>
+
+    <section class="summary" aria-label="Task summary">
+      <article class="summary-card">
+        <span class="summary-icon icon-total" aria-hidden="true">▤</span>
+        <div>
+          <p class="summary-label">All tasks</p>
+          <p class="summary-value" id="total-count">0</p>
+        </div>
+      </article>
+      <article class="summary-card">
+        <span class="summary-icon icon-pending" aria-hidden="true">◷</span>
+        <div>
+          <p class="summary-label">To do</p>
+          <p class="summary-value" id="pending-count">0</p>
+        </div>
+      </article>
+      <article class="summary-card">
+        <span class="summary-icon icon-done" aria-hidden="true">✓</span>
+        <div>
+          <p class="summary-label">Completed</p>
+          <p class="summary-value" id="completed-count">0</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- The form and task list sit side by side on wider screens -->
+    <div class="workspace">
+      <section class="panel form-panel" aria-labelledby="form-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">STAY ON TRACK</p>
+            <h2 id="form-heading">Add a task</h2>
+          </div>
+          <span class="heading-icon" aria-hidden="true">＋</span>
+        </div>
+
+        <form id="task-form">
+          <div class="field">
+            <label for="task-title">Task title <span aria-hidden="true">*</span></label>
+            <input id="task-title" name="title" type="text" maxlength="100" placeholder="e.g. Read chapter 4" required>
+          </div>
+
+          <div class="field">
+            <label for="task-description">Description</label>
+            <textarea id="task-description" name="description" rows="4" maxlength="500" placeholder="Add a few details to help you get started..."></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="task-due-date">Due date</label>
+              <input id="task-due-date" name="dueDate" type="date">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="button button-primary" id="submit-button" type="submit">Add task <span aria-hidden="true">＋</span></button>
+            <button class="button button-secondary" id="cancel-edit" type="button" hidden>Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Tasks are added here by script.js -->
+      <section class="panel tasks-panel" aria-labelledby="tasks-heading">
+        <div class="tasks-heading-row">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">YOUR PLAN</p>
+              <h2 id="tasks-heading">My tasks <span class="task-count" id="list-count">0</span></h2>
+            </div>
+          </div>
+          <label class="filter-label" for="task-filter">Show
+            <select id="task-filter">
+              <option value="all">All tasks</option>
+              <option value="pending">To do</option>
+              <option value="completed">Completed</option>
+            </select>
+          </label>
+        </div>
+
+        <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+        <ul class="task-list" id="task-list" aria-label="Your tasks"></ul>
+        <div class="empty-state" id="empty-state">
+          <span class="empty-illustration" aria-hidden="true">✎</span>
+          <h3 id="empty-title">Your list is a fresh page.</h3>
+          <p id="empty-copy">Add your first task and take one step closer to your goals.</p>
+        </div>
+      </section>
+    </div>
+    <footer class="page-footer">Small steps add up. You’ve got this! <span aria-hidden="true">✦</span></footer>
+  </main>
+</body>
+</html>
